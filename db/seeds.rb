@@ -26,3 +26,17 @@ Blog.create!(
     }
   ]
 )
+
+other = User.create!(
+  email: "other@example.com",
+  password: "password",
+  name: "別のユーザー",
+  bio: "別のユーザーです"
+)
+user.blogs.each do |blog|
+  blog.comments.build(
+    description: "コメント",
+    author: other
+  )
+  blog.save
+end
