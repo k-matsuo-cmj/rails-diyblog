@@ -2,12 +2,12 @@
 <p>Find me in app/views/blogs/show.html.erb</p>
 <p>Blog post detail page</p>
 <ul>
-  <li>Accessible to all users from blog post lists.</li>
+  <li style="text-decoration: line-through;">Accessible to all users from blog post lists.</li>
   <li style="text-decoration: line-through;">Page contains the blog post: name, author, post date, and content.</li>
-  <li>Comments for the blog post should be displayed at bottom.</li>
-  <li>Comments should be sorted in order: oldest to most recent.</li>
+  <li style="text-decoration: line-through;">Comments for the blog post should be displayed at bottom.</li>
+  <li style="text-decoration: line-through;">Comments should be sorted in order: oldest to most recent.</li>
   <li>Contains link to add comments at end for logged in users (see Comment form page)</li>
-  <li>Blog posts and comments need only display plain text. There is no need to support any sort of HTML markup (e.g. links, images, bold/italic, etc).ge</li>
+  <li style="text-decoration: line-through;">Blog posts and comments need only display plain text. There is no need to support any sort of HTML markup (e.g. links, images, bold/italic, etc).ge</li>
 </ul>
 
 <h2><%= @blog.name %></h2>
@@ -23,3 +23,15 @@
   <strong>Description: </strong><br>
   <%= @blog.description %>
 </div>
+<div>
+  <ul>
+    <% @blog.comments.each do |comment| %>
+      <li>
+        <%= comment.author.name %>
+        <%= comment.post_date.strftime("(%b. %d, %Y, %I:%M %P)") %> - 
+        <%= comment.description %>
+      </li>        
+    <% end %>
+  </ul>
+</div>
+<%= link_to "Add a new comment", new_blog_blog_comment_path(@blog.id) %>
