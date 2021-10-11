@@ -40,3 +40,12 @@ user.blogs.each do |blog|
   )
   blog.save
 end
+
+20.times do |n|
+  user.blogs.build(
+    name: "テストブログ#{100 + n}",
+    description: "ああああああああああああ",
+    author: user
+  )
+  user.save
+end

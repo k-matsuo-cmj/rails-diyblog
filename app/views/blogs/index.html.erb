@@ -4,12 +4,11 @@
 <ul>
   <li style="text-decoration: line-through;">Accessible to all users from a sidebar link.</li>
   <li style="text-decoration: line-through;">List sorted by post date (newest to oldest).</li>
-  <li>List paginated in groups of 5 articles.</li>
+  <li style="text-decoration: line-through;">List paginated in groups of 5 articles.</li>
   <li style="text-decoration: line-through;">List items display the blog title, post date, and author.</li>
   <li style="text-decoration: line-through;">Blog post names are linked to blog detail pages.</li>
   <li style="text-decoration: line-through;">Blogger (author names) are linked to blog author detail pages.</li>
 </ul>
-<%= link_to "Home", root_path %>
 
 <% if @blogs.any? %>
 <div>
@@ -20,6 +19,7 @@
       <%= link_to "#{blog.author.name}", "/blog/bloggers/#{blog.author.id}" %>
     </div>
   <% end %>
+  <%= will_paginate @blogs %>
 </div>
 <% else %>
 <p>There are no blogs.</p>
