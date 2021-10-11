@@ -2,7 +2,17 @@
 <p>Find me in app/views/bloggers/index.html.erb</p>
 <p>List of bloggers on system:</p>
 <ul>
-  <li>Accessible to all users from site sidebar</li>
-  <li>Blogger names are linked to Blog author detail pages.</li>
+  <li style="text-decoration: line-through;">Accessible to all users from site sidebar</li>
+  <li style="text-decoration: line-through;">Blogger names are linked to Blog author detail pages.</li>
 </ul>
 <%= link_to "Home", root_path %>
+
+<div>
+  <ul>
+    <% @bloggers.each do |blogger| %>
+    <li>
+      <%= link_to "#{blogger.name}", "/blog/bloggers/#{blogger.id}" %>
+    </li>
+    <% end %>
+  </ul>
+</div>
