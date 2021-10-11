@@ -6,7 +6,7 @@
   <li style="text-decoration: line-through;">Page contains the blog post: name, author, post date, and content.</li>
   <li style="text-decoration: line-through;">Comments for the blog post should be displayed at bottom.</li>
   <li style="text-decoration: line-through;">Comments should be sorted in order: oldest to most recent.</li>
-  <li>Contains link to add comments at end for logged in users (see Comment form page)</li>
+  <li style="text-decoration: line-through;">Contains link to add comments at end for logged in users (see Comment form page)</li>
   <li style="text-decoration: line-through;">Blog posts and comments need only display plain text. There is no need to support any sort of HTML markup (e.g. links, images, bold/italic, etc).ge</li>
 </ul>
 
@@ -34,4 +34,8 @@
     <% end %>
   </ul>
 </div>
-<%= link_to "Add a new comment", new_blog_blog_comment_path(@blog.id) %>
+<% if user_signed_in? %>
+  <%= link_to "Add a new comment", new_blog_blog_comment_path(@blog.id) %>
+<% else %>
+  <%= link_to "Login", new_user_session_path %> to add a new comment
+<% end %>
